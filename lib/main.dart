@@ -1,45 +1,38 @@
-import 'package:firebase_core/firebase_core.dart';
+// filepath: /C:/Users/ottav/UNIFEI/Asimov/todo_list/lib/main.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_list/core/services/notification/task_notification_service.dart';
-import 'package:todo_list/firebase_options.dart';
-import 'pages/auth_or_app_page.dart';
+import 'package:todo_list/pages/auth_or_app_page.dart';
+import 'core/services/auth/dark_mode_task.dart';
 
-
-Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+void main() {
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => TaskNotificationService()),
+        ChangeNotifierProvider(create: (_) => DarkModeTask()),
+      ],
+      child: MyApp(),
+    ),
   );
-
-  runApp(MyApp());
 }
 
-// void main() => runApp(MyApp());
-
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
-  final ThemeData tema = ThemeData();
+  const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider(
-          create: (_) => TaskNotificationService(),
-        ),
-      ],
-      child: MaterialApp(
-        home: const AuthOrAppPage(),
-        debugShowCheckedModeBanner: false,
-        title: 'ToDo App',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-      ),
+    return Consumer<DarkModeTask>(
+      builder: (context, themeProvider, child) {
+        return MaterialApp(
+          home: const AuthOrAppPage(),
+          debugShowCheckedModeBanner: false,
+          title: 'ToDo App',
+          theme: themeProvider.isDarkMode ? ThemeData.dark() : ThemeData(
+            colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue).copyWith(secondary: Colors.redAccent),
+          ),
+        );
+      },
     );
   }
 }

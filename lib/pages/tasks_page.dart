@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_list/core/services/auth/dark_mode_task.dart';
 import 'package:todo_list/core/services/notification/task_notification_service.dart';
 import 'package:todo_list/pages/notification_page.dart';
 import '../components/new_task.dart';
@@ -14,7 +15,7 @@ class TasksPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "ToDo App",
+          "To-DO List",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
@@ -38,10 +39,22 @@ class TasksPage extends StatelessWidget {
                     ),
                   ),
                 ),
+                DropdownMenuItem(
+                  value: 'toggle_theme',
+                  child: Row(
+                    children: [
+                      Icon(Icons.brightness_6),
+                      SizedBox(width: 10),
+                      Text('Alternar Tema'),
+                    ],
+                  ),
+                ),
               ],
               onChanged: (value) {
                 if (value == 'logout') {
                   AuthService().logout();
+                } else if (value == 'toggle_theme') {
+                  Provider.of<DarkModeTask>(context, listen: false).toggleDarkMode();
                 }
               },
             ),

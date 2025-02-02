@@ -47,6 +47,7 @@ class AuthFirebaseService implements AuthService {
       email: email,
       password: password,
     );
+    
 
     if (credential.user != null) {
       final imageName = '${credential.user!.uid}.jpg';
