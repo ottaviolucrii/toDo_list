@@ -19,7 +19,6 @@ class _TaskFormState extends State<TaskForm> {
   Future<void> _submitForm() async {
     final title = _titleController.text;
 
-    // ignore: unnecessary_null_comparison
     if (title.isEmpty || _selectedDate == null) {
       return;
     }
@@ -48,32 +47,26 @@ class _TaskFormState extends State<TaskForm> {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: prefer_const_constructors
     return Card(
       elevation: 5,
-      // ignore: prefer_const_constructors
       child: Padding(
-        // ignore: prefer_const_constructors
         padding: EdgeInsets.all(10),
         child: Column(
           children: <Widget>[
             TextField(
               controller: _titleController,
               onSubmitted: (_) => _submitForm(),
-              // ignore: prefer_const_constructors
               decoration: InputDecoration(
                 labelText: 'Título',
               ),
             ),
             const SizedBox(height: 20),
-            // ignore: sized_box_for_whitespace
             Container(
               height: 70,
               child: Row(
                 children: [
                   Expanded(
                     child: Text(
-                      // ignore: unnecessary_null_comparison
                       _selectedDate == null
                           ? 'Nenhuma data de entrega selecionada!'
                           : 'Data de entrega: ${DateFormat('dd/MM/y').format((_selectedDate))}',
@@ -85,10 +78,8 @@ class _TaskFormState extends State<TaskForm> {
                           Theme.of(context).colorScheme.primary),
                     ),
                     onPressed: _showDatePicker,
-                    // ignore: prefer_const_constructors
                     child: Text(
                       'Selecionar data',
-                      // ignore: prefer_const_constructors
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
@@ -98,7 +89,6 @@ class _TaskFormState extends State<TaskForm> {
               ),
             ),
             const SizedBox(height: 40),
-            // ignore: sized_box_for_whitespace
             Container(
               height: 60,
               width: 60,

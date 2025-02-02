@@ -6,13 +6,10 @@ import '../core/services/tasks/task_service.dart';
 import 'task_card.dart';
 
 class TasksList extends StatelessWidget {
-  // final Function(String) onRemove;
 
   const TasksList({super.key});
 
-  // _deletTask(String id) {
-  //   TaskService().removeTask(id);
-  // }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +46,6 @@ class TasksList extends StatelessWidget {
             itemBuilder: (ctx, i) => TaskCard(
               key: ValueKey(tasks[i].id),
               task: tasks[i],
-              // onRemove: _deletTask,
             ),
             separatorBuilder: (ctx, i) {
               return SizedBox(height: 4);

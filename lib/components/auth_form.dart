@@ -1,7 +1,5 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-
 import '../core/models/auth_form_data.dart';
 import 'user_image_picker.dart';
 
@@ -56,7 +54,6 @@ class _AuthFormState extends State<AuthForm> {
           child: Column(
             children: [
               if(_formData.isSignup)
-                // ignore: prefer_const_constructors
                 UserImagePicker(onImagePick: _handleImagePick),
               if(_formData.isSignup)
                 TextFormField(
@@ -64,7 +61,6 @@ class _AuthFormState extends State<AuthForm> {
                   initialValue: _formData.name,
                   onChanged: (name) => _formData.name = name,
                   decoration: const InputDecoration(labelText: 'Nome'),
-                  // ignore: no_leading_underscores_for_local_identifiers
                   validator: (_name) {
                     final name = _name ?? '';
                     if(name.trim().length < 5) {
@@ -78,7 +74,6 @@ class _AuthFormState extends State<AuthForm> {
                 initialValue: _formData.email,
                 onChanged: (email) => _formData.email = email,
                 decoration: const InputDecoration(labelText: 'E-mail'),
-                // ignore: no_leading_underscores_for_local_identifiers
                 validator: (_email) {
                     final email = _email ?? '';
                     if(!email.contains('@')) {
@@ -93,7 +88,6 @@ class _AuthFormState extends State<AuthForm> {
                 onChanged: (password) => _formData.password = password,
                 obscureText: true,
                 decoration: const InputDecoration(labelText: 'Senha'),
-                // ignore: no_leading_underscores_for_local_identifiers
                 validator: (_password) {
                     final password = _password ?? '';
                     if(password.length < 6) {

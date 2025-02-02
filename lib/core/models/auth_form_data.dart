@@ -1,7 +1,5 @@
-// ignore: constant_identifier_names
 import 'dart:io';
 
-// ignore: constant_identifier_names
 enum AuthMode { Signup, Login }
 
 class AuthFormData {

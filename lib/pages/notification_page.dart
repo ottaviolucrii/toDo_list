@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:capacitacao_firebase2/core/services/notification/task_notification_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../core/services/notification/task_notification_service.dart';
 
 class NotificationPage extends StatelessWidget {
   const NotificationPage({super.key});

@@ -2,7 +2,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-
 class UserImagePicker extends StatefulWidget {
   final void Function(File image) onImagePick;
 
@@ -26,7 +25,7 @@ class _UserImagePickerState extends State<UserImagePicker> {
       maxWidth: 150,
     );
 
-    if(pickedImage != null) { 
+    if (pickedImage != null) {
       setState(() {
         _image = File(pickedImage.path);
       });
@@ -37,11 +36,8 @@ class _UserImagePickerState extends State<UserImagePicker> {
 
   @override
   Widget build(BuildContext context) {
-    // ignore: prefer_const_constructors
     return Column(
-      // ignore: prefer_const_literals_to_create_immutables
       children: [
-        // ignore: prefer_const_constructors
         CircleAvatar(
           radius: 40,
           backgroundColor: Colors.grey,
@@ -56,9 +52,7 @@ class _UserImagePickerState extends State<UserImagePicker> {
                 Icons.image,
                 color: Theme.of(context).primaryColor,
               ),
-              // ignore: prefer_const_constructors
               SizedBox(width: 10),
-              // ignore: prefer_const_constructors
               Text('Adicionar Imagem'),
             ],
           ),

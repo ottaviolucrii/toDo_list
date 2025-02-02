@@ -1,11 +1,9 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, sized_box_for_whitespace, avoid_unnecessary_containers
-
-import 'package:capacitacao_firebase2/core/services/notification/task_notification_service.dart';
-import 'package:capacitacao_firebase2/pages/notification_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_list/core/services/notification/task_notification_service.dart';
+import 'package:todo_list/pages/notification_page.dart';
 import '../components/new_task.dart';
-import '../components/tasks_list.dart';
+import '../components/task_list.dart';
 import '../core/services/auth/auth_service.dart';
 
 class TasksPage extends StatelessWidget {
